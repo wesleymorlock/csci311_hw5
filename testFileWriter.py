@@ -27,31 +27,12 @@ def random_graph_creator():
     for i in range(0, vertices):
         while v1 == v2:
             v2 = random.randint(0, vertices)
-        used_vertices.append(v2)
+        used_vertices.append(str(v2))
         weight = random.randint(1, 15)
 
-        graph_list.append((v1, v2, weight))
+        graph_list.append([str(v1), str(v2), weight])
         v1 = v2
 
-    # if len(used_vertices) != vertices:
-    #     for i in range(vertices):
-    #         v2 = i
-    #         if i not in used_vertices:
-    #             v1 = rand(0, vertices)
-    #             weight = rand(1, 15)
-    #         graph_list.append((v1, v2, weight))
-
-    return graph_list
+    return graph_list, used_vertices
 
 
-def main() :
-    #assume, X is your graph.
-    for i in range(10):
-        # X = [(1, 2, 4), (2, 3, 9), (3, 2, 4), (3, 3, 1)]
-        X = random_graph_creator()
-        file_name = "my_graph_" + str(i)
-        write_dot_file(X, file_name)   
-    # done 
-
-
-main()
