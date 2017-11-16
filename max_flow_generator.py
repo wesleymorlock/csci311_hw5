@@ -4,9 +4,9 @@ Homework 05
 Finding Maximum Flow
 11/13/2017
 """
-import os
-os.environ["PATH"] += os.pathsep + '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages'
-from graphviz import Digraph
+#import os
+#os.environ["PATH"] += os.pathsep + '/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages'
+# from graphviz import Digraph
 
 class Edge(object):
 
@@ -75,6 +75,7 @@ class FlowNetwork(object):
         return sum(self.flow[edge] for edge in self.getEdges(source))
 
 def main():
+    print("hi")
     g = FlowNetwork()
     vertices = ['1', '2', '3', '4', '5', '6']
     for s in vertices:
@@ -90,4 +91,7 @@ def main():
     g.addEdge('5', '4', 2)
     g.addEdge('5', '6', 4)
     g.addEdge('2', '6', 3)
+    print("hi")
     print (str(g.maxFlow('1', '6')))  
+
+main()
