@@ -8,37 +8,46 @@ from testFileWriter import *
 from max_flow_generator import *
 
 def main():
-    g = FlowNetwork()
-    g.addVertex('1', True, False)   ##source
-    g.addVertex('6',False,True)     ##sink
+    for z in range(10):
+        g = FlowNetwork()
+        g.addVertex('0', True, False)   ##source
+        g.addVertex('6',False,True)     ##sink
 
-    r = random_graph_creator()
-    vertices = r[1]
-    vertices.remove('0')
-    vertices.remove('6') ##sometime 6 ins't a vertex -> will give error
+        r = test_network_generator()
+        vertices = r[1]
+        print("vertices: " + str(vertices) + "\n")
+        vertices.remove('0')
+        vertices.remove('6') ##sometime 6 ins't a vertex -> will give error
 
-    for s in vertices:
-        g.addVertex(s) 
-    x = r[0]
-    for i in range(len(x)):
-        g.addEdge(x[i][0],x[i][1],x[i][2])
-        
-    print('vertices: ' + str([vertex.name for vertex in g.vertices]) + '\n')
-    print('edges: ' + str(['%s -> %s; %s/%s' % (e.start, e.end, e.flow, e.capacity) for e in g.getEdges()])+ '\n')
-    print('max flow: ' + str(g.calculateMaxFlow()) + '\n')
-    print('max edges: ' + str(g.getMaxEdges()))
+        for s in vertices:
+            g.addVertex(s) 
+        x = r[0]
+        for i in range(len(x)):
+            g.addEdge(x[i][0],x[i][1],x[i][2])
+            
+        file_name = "my_graph_" + str(z)
+        write_dot_file(r[0], file_name)  
 
+        max_edges = g.getMaxEdges()
+
+        print('vertices: ' + str([vertex.name for vertex in g.vertices]) + '\n')
+        print('edges: ' + str(['%s -> %s; %s/%s' % (e.start, e.end, e.flow, e.capacity) for e in g.getEdges()])+ '\n')
+        print('max flow: ' + str(g.calculateMaxFlow()) + '\n')
+        print('max edges: ' + str(max_edges))
+
+        file_name = "max_edges_" + str(z)
+        write_dot_file(max_edges, file_name)
 
 main()
 
-##def main() :
-##    #assume, X is your graph.
-##    for i in range(10):
-##        # X = [(1, 2, 4), (2, 3, 9), (3, 2, 4), (3, 3, 1)]
-##        X = random_graph_creator()
-##        file_name = "my_graph_" + str(i)
-##        write_dot_file(X, file_name)   
-##    # done 
+def main() :
+   #assume, X is your graph.
+   
+       # X = [(1, 2, 4), (2, 3, 9), (3, 2, 4), (3, 3, 1)]
+       X = test_network_generator()
+       file_name = "my_graph_" + str(i)
+       write_dot_file(X, file_name)   
+   # done 
 
 
 

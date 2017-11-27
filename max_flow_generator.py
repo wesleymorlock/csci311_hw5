@@ -6,6 +6,7 @@ Finding Maximum Flow
 """
 import os
 import random
+import numbers
 
 class Vertex:
     def __init__(self, name, source=False, sink=False):
@@ -110,7 +111,9 @@ class FlowNetwork:
         if source == None or sink == None:
             return "Network does not have source and sink"
         path = self.getPath(source.name, sink.name, [])
+        i = 0
         while path != None:
+            i += 1
             flow = min(edge[1] for edge in path)
             for edge, res in path:
                 edge.flow += flow
