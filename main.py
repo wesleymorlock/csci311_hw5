@@ -9,6 +9,9 @@ from max_flow_generator import *
 import os
 
 def main():
+    
+    os.system("mkdir input_graphs && mkdir output_graphs")
+    
     for z in range(10):
         g = FlowNetwork()
         g.addVertex('0', True, False)   ##source
@@ -28,7 +31,7 @@ def main():
         file_name = "my_graph_" + str(z)
         name = os.path.join("./input_graphs/", file_name)
         print(file_name)
-        write_dot_file(r[0], name)  
+        write_dot_file(r[0], name, "input_graphs")  
 
         max_edges = g.getMaxEdges()
 
@@ -42,7 +45,7 @@ def main():
 
         file_name = "max_edges_" + str(z)
         name = os.path.join("./output_graphs/", file_name)
-        write_dot_file(max_edges, name)
+        write_dot_file(max_edges, name, "output_graphs")
 
         
 
