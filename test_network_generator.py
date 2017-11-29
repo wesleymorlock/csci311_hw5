@@ -14,7 +14,6 @@ def write_dot_file(Y, name, directory):
     f.write(" } ")
     f.close()
     os.system("dot -T pdf "+ name + ".dot" + " -o " + name + ".pdf")
-    os.system("mkdir input_graphs && mkdir output_graphs")
     os.system("mv " + name + " " + directory)
 
 def test_network_generator():
