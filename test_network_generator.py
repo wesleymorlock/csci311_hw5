@@ -1,7 +1,7 @@
 import os
 import random
 
-def write_dot_file(Y, name):
+def write_dot_file(Y, name, directory):
 
     f = open(name+ ".dot", "w+")
     f.write(" digraph g{ ")
@@ -14,6 +14,8 @@ def write_dot_file(Y, name):
     f.write(" } ")
     f.close()
     os.system("dot -T pdf "+ name + ".dot" + " -o " + name + ".pdf")
+    os.system("mkdir input_graphs && mkdir output_graphs")
+    os.system("mv " + name + " " + directory)
 
 def test_network_generator():
   vertices = random.randint(7,15)
@@ -68,7 +70,6 @@ def test_network_generator():
           graph_list.append([str(v1), str(v2), weight])
           connections.append([str(v1), str(v2)])
    
-
   if len(used_vertices) < vertices:
     for x in range(vertices): 
       if str(x) not in used_vertices:
