@@ -1,0 +1,3 @@
+ digraph g{   rankdir = LR 0-> 2 [label = "12"]
+2-> 6 [label = "3"]
+label =  max_edges_4 } 
